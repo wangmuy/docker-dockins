@@ -1,0 +1,18 @@
+version: '3'
+services:
+  myjenkins:
+    build:
+      context: .
+    image: myjenkins
+    container_name: myjenkins
+    ports:
+      - "8080:8080"
+      - "50000:50000"
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./data:/var/jenkins_home
+    environment:
+      - LANG=C.UTF-8
+
